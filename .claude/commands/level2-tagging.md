@@ -4,6 +4,16 @@ Execute comprehensive tagging compliance check for Level 2 (Proactive).
 
 **Target:** ≥95% compliance with Unified Service Tagging (env, service, version)
 
+**For detailed tagging implementation guidance**, see:
+→ [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md) ⭐ **REQUIRED FOR LEVEL 3**
+
+This operational standard provides:
+- Complete UST implementation guide
+- Tag format enforcement (lowercase, underscores)
+- Recommended tags beyond UST (team, runtime, journey, role, application)
+- Tag validation in CI/CD pipelines
+- Cost attribution tag requirements
+
 **Step 1: Query All Resources with Tags**
 
 **Hosts:**
@@ -153,11 +163,26 @@ For each non-compliant resource:
 
 ---
 
-**Save Report To:**
-`maturity-levels/level-2-proactive/tagging-compliance-report-[DATE].md`
+**After completing tagging analysis:**
+
+Automatically create Datadog Notebook with advanced tagging strategy:
+
+```
+create_datadog_notebook(
+    name="Level 2 - Optimization - Advanced Tagging Strategy - [DATE]",
+    type="documentation",
+    cells=... # Include tagging compliance report and recommendations
+)
+```
+
+**Notebook naming format:**
+- "Level 2 - Optimization - Advanced Tagging Strategy - YYYY-MM-DD"
+- Example: "Level 2 - Optimization - Advanced Tagging Strategy - 2025-12-12"
+
+Return notebook URL for team implementation tracking.
 
 **Validation Query:**
-```
+```bash
 # Re-run in 30 days to measure improvement
 /level2-tagging
 ```

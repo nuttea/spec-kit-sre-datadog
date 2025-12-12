@@ -4,6 +4,15 @@ Generate step-by-step upgrade plan from current level to next level.
 
 **Purpose:** Create actionable implementation plan with concrete steps, milestones, and validation criteria.
 
+**For implementation details on each step**, refer to:
+→ [Operational Standards Mapping](../planning/operational-standards-mapping.md) - Complete guide showing which operational standards to use at each level
+
+**Key operational standards by level**:
+- Level 0→1: Platform Preparation, Access Management
+- Level 1→2: **Tagging Strategy** (critical!), Data Monitoring, Data Visualization
+- Level 2→3: Governance, Advanced Log Optimization
+- Level 3→4: Advanced automation (beyond standard guides)
+
 **Step 1: Validate Current Level**
 Run assessment to confirm current level and capabilities.
 
@@ -107,3 +116,21 @@ Include:
 # Validate completion
 /assess-level[N+1]
 ```
+
+**After creating upgrade plan:**
+
+Automatically create Datadog Notebook with roadmap:
+
+```
+create_datadog_notebook(
+    name="Level [CURRENT] to Level [NEXT] - Upgrade Plan - [DATE]",
+    type="runbook",
+    cells=... # Include complete upgrade plan with phases and commands
+)
+```
+
+**Notebook naming format:**
+- "Level [N] to Level [N+1] - Upgrade Plan - YYYY-MM-DD"
+- Example: "Level 2 to Level 3 - Upgrade Plan - 2025-12-12"
+
+Return notebook URL for team tracking and project management.

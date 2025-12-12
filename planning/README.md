@@ -76,6 +76,37 @@ This directory contains detailed planning documents for the SRE Spec Kit with Da
 
 ---
 
+### 5. [Notebook Templates Specification](./notebook-templates-spec.md)
+**Purpose**: Defines the structure and content for all Datadog Notebook templates used in assessments and investigations.
+
+**Contents**:
+- Template structure standards
+- Frontmatter requirements
+- MCP query integration patterns
+- Template variable conventions
+- Template categories (assessments, investigations, postmortems, runbooks, reports)
+- Git-friendly markdown format
+- Pre-filled query examples
+
+**Use this when**: Creating new notebook templates or understanding template structure.
+
+---
+
+### 6. [Notebook Naming Conventions](./notebook-naming-conventions.md)
+**Purpose**: Standardized naming format for automated Datadog Notebook creation across all assessment and audit commands.
+
+**Contents**:
+- Naming pattern: "Level [N] - [Level Name] - [Report Type] - Date"
+- Level name reference table (Foundation, Standardization, etc.)
+- Naming examples for all 11 commands
+- Organization strategies in Datadog UI
+- Benefits of standardized naming
+- Dynamic variable reference
+
+**Use this when**: Implementing automatic notebook creation in commands or organizing notebooks in Datadog.
+
+---
+
 ## Quick Reference
 
 ### Maturity Level Summary

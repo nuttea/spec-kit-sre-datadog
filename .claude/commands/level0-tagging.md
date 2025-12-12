@@ -2,6 +2,16 @@
 
 Execute comprehensive tagging audit for Level 0 (Foundation).
 
+**For detailed tagging implementation guidance**, see:
+→ [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md)
+
+This operational standard provides:
+- UST tag definitions (env, service, version)
+- Tag format requirements (lowercase, underscores)
+- Reserved vs recommended tags
+- Anti-patterns to avoid
+- Tag enforcement strategies
+
 **Task: Analyze Current Tagging Practices**
 
 **Step 1: Query All Hosts with Tags**
@@ -72,12 +82,31 @@ For each tag category:
 4. Tag validation approach
 
 **Deliverable:**
-Create tagging audit report and save to:
-`maturity-levels/level-0-foundation/tagging-audit-report.md`
+
+Automatically create Datadog Notebook with tagging audit results:
+
+```
+create_datadog_notebook(
+    name="Level 0 - Foundation - Tagging Audit - [DATE]",
+    type="documentation",
+    cells=[
+        {
+            "type": "markdown",
+            "data": "# Level 0 - Tagging Audit Report\n\n**Date**: [DATE]\n**Overall Compliance**: [%]\n\n## UST Tag Coverage\n- env: [%]\n- service: [%]\n- version: [%]\n- team: [%]\n\n## Tag Quality Issues\n[Details]\n\n## Recommended Actions\n[Roadmap]"
+        }
+    ]
+)
+```
+
+**Notebook naming format:**
+- "Level 0 - Foundation - Tagging Audit - YYYY-MM-DD"
+- Example: "Level 0 - Foundation - Tagging Audit - 2025-12-12"
 
 Include:
-- Current compliance rates
+- Current compliance rates with charts
 - Identified issues with examples
 - Recommended tagging standard
-- Implementation roadmap
+- Implementation roadmap with priorities
 - Tag enforcement strategy
+
+Return notebook URL for team collaboration.

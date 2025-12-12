@@ -12,25 +12,59 @@
 - ✅ Claude Code CLI running
 - ✅ This repository cloned locally
 
-### First Time Setup
+### Two Ways to Run Commands
 
-**Step 1: Verify Datadog MCP Connection**
-```
-Tell me about my Datadog organization. Query available hosts and services.
-```
-*Claude will verify MCP connectivity and show basic org info*
+This spec kit supports **two command formats** - use whichever you prefer:
 
-**Step 2: Determine Your Starting Level**
+#### Option A: Slash Commands (Direct) ⚡
+```bash
+/assess
+```
+Fast, explicit commands that execute immediately.
+
+#### Option B: Natural Language (Conversational) 💬
 ```
 Run maturity assessment to determine my current SRE level
 ```
+Conversational prompts that Claude interprets.
+
+**Both work identically!** Examples below show slash commands, but feel free to use natural language.
+
+---
+
+### First Time Setup
+
+**Step 1: Verify Datadog MCP Connection**
+
+**Slash command**:
+```bash
+# Natural language works too
+Tell me about my Datadog organization. Query available hosts and services.
+```
+
+*Claude will verify MCP connectivity and show basic org info*
+
+**Step 2: Determine Your Starting Level**
+
+**Slash command**:
+```bash
+/assess
+```
+
+**Natural language**:
+```
+Run maturity assessment to determine my current SRE level
+```
+
 *Claude will execute comprehensive assessment across all 8 dimensions*
 
-**Step 3: View Assessment Results**
-```
-Show my maturity scorecard with scores for each dimension
-```
-*Claude will display your current level and scores*
+**Step 3: View Results and Next Steps**
+
+Your assessment will show:
+- Overall maturity level (0-5)
+- Scores for each dimension
+- Top strengths and critical gaps
+- Recommended actions
 
 ---
 
@@ -53,11 +87,27 @@ All commands are organized by purpose. Simply copy and paste into Claude Code:
 ## 🎯 Phase 1: Assessment Commands
 
 ### Quick Maturity Check (10 minutes)
+
+**Slash command**:
+```bash
+/assess
+```
+
+**Natural language**:
 ```
 Run quick maturity assessment covering all 8 dimensions
 ```
 
+---
+
 ### Comprehensive Assessment (30 minutes)
+
+**Slash command**:
+```bash
+/assess-full
+```
+
+**Natural language**:
 ```
 Run comprehensive SRE maturity assessment with detailed analysis of:
 - Infrastructure coverage
@@ -72,16 +122,61 @@ Run comprehensive SRE maturity assessment with detailed analysis of:
 Generate detailed report with scores and recommendations
 ```
 
-### View Current Scores
-```
-Show my current maturity scores across all dimensions
+---
+
+### Gap Analysis
+
+**Slash command**:
+```bash
+/gap-analysis
 ```
 
-### Compare Against Targets
+**Natural language**:
 ```
-Compare my current scores against target levels for Level [N]
+Generate gap analysis from current level to target level with:
+- Missing capabilities
+- Prioritization by impact and effort
+- Implementation roadmap
+- Timeline estimates
 ```
-*Replace [N] with your target level: 0, 1, 2, 3, 4, or 5*
+
+---
+
+### Upgrade Plan
+
+**Slash command**:
+```bash
+/upgrade-plan
+```
+
+**Natural language**:
+```
+Create upgrade plan from my current level to the next level with:
+- Prerequisite capabilities
+- Implementation steps
+- Effort estimates
+- Quick wins
+- Milestone timeline
+```
+
+---
+
+### Generate Report
+
+**Slash command**:
+```bash
+/generate-report
+```
+
+**Natural language**:
+```
+Generate executive summary of SRE maturity for leadership with:
+- Current level and score
+- Key strengths
+- Top 3 gaps
+- Recommended investments
+- Expected ROI
+```
 
 ---
 
@@ -90,48 +185,66 @@ Compare my current scores against target levels for Level [N]
 **Purpose**: Discover current state and establish baseline
 
 ### Infrastructure Discovery
-```
-Run Level 0 infrastructure discovery:
-1. Inventory all hosts with agents
-2. Identify cloud providers and regions
-3. List all monitored services
-4. Calculate current agent deployment coverage
-5. Export results to markdown report
+
+**Slash command**:
+```bash
+/level0-infra
 ```
 
-### Tagging Audit
+**What it does**:
+- Inventory all hosts with agents
+- Identify cloud providers and regions
+- List all monitored services
+- Calculate agent deployment coverage
+- Export results to markdown report
+
+---
+
+### Tagging Audit ⭐ RECOMMENDED FIRST
+
+**Slash command**:
+```bash
+/level0-tagging
 ```
-Run Level 0 tagging audit:
-1. Analyze tag coverage across all hosts
-2. Identify missing required tags (env, service, version)
-3. Find inconsistent tag formats
-4. Generate tagging compliance report
-5. Recommend tagging strategy
-```
+
+**What it does**:
+- Analyze tag coverage across all hosts
+- Identify missing required tags (env, service, version)
+- Find inconsistent tag formats
+- Generate tagging compliance report
+- Recommend tagging strategy
+
+**Why start here**: Tagging is the foundation for cost attribution, filtering, and Level 3 advancement.
+
+---
 
 ### Cost Baseline
-```
-Establish Level 0 cost baseline:
-1. Query total cloud spend (last 90 days)
-2. Break down costs by service and team
-3. Calculate observability cost as % of infrastructure
-4. Identify top cost drivers
-5. Create cost baseline report
+
+**Slash command**:
+```bash
+/level0-cost
 ```
 
-### Coverage Gap Analysis
-```
-Run Level 0 coverage gap analysis:
-1. Compare cloud instances vs monitored hosts
-2. Identify services without monitoring
-3. Find production systems without agents
-4. List critical gaps
-5. Generate remediation plan
+**What it does**:
+- Query total cloud spend (last 90 days)
+- Break down costs by service and team
+- Calculate observability cost as % of infrastructure
+- Identify top cost drivers
+- Create cost baseline report
+
+**Note**: Requires Cloud Cost Management enabled and tagging compliance.
+
+---
+
+### Complete Health Check
+
+**Slash command**:
+```bash
+/level0-healthcheck
 ```
 
-### Health Check Report
-```
-Generate Level 0 health check report including:
+**What it does**:
+- Complete validation across all Level 0 dimensions
 - Infrastructure inventory summary
 - Agent deployment coverage
 - Tag compliance status
@@ -139,8 +252,7 @@ Generate Level 0 health check report including:
 - Cost baseline
 - Recommended next steps
 
-Save report to: maturity-levels/level-0-foundation/my-healthcheck-report.md
-```
+**Best for**: Comprehensive baseline assessment (combines all Level 0 checks)
 
 ---
 
@@ -568,24 +680,60 @@ Level definitions: [planning/level-definitions.md](./planning/level-definitions.
 
 ## 🚦 Quick Decision Tree
 
-**Not sure where to start?**
+**Not sure where to start?** Choose your scenario:
 
+### 1. "I'm new to this spec kit"
+**Run**:
+```bash
+/assess
 ```
-1. "I'm new to this spec kit"
-   → Run: "Run quick maturity assessment"
+*Determines your current maturity level and provides next steps*
 
-2. "I know my level, want to assess it"
-   → Run: "Run Level [N] comprehensive check"
+---
 
-3. "I want to advance to next level"
-   → Run: "Create upgrade plan from Level [N] to Level [N+1]"
-
-4. "I want a report for leadership"
-   → Run: "Generate executive summary of SRE maturity"
-
-5. "I'm stuck/getting errors"
-   → Run: "Debug assessment failure"
+### 2. "I need to fix tagging" (Most common gap)
+**Run**:
+```bash
+/level0-tagging
 ```
+*Identifies tagging compliance issues - the #1 blocker for advancement*
+
+---
+
+### 3. "I want to advance to next level"
+**Run**:
+```bash
+/gap-analysis
+/upgrade-plan
+```
+*Shows what's missing and creates step-by-step roadmap*
+
+---
+
+### 4. "I need a report for leadership"
+**Run**:
+```bash
+/generate-report
+```
+*Creates executive summary with ROI and recommendations*
+
+---
+
+### 5. "I want to validate my current level"
+**Run**:
+```bash
+/assess-level0  # or /assess-level1, /assess-level2, etc.
+```
+*Checks if you meet all requirements for a specific level*
+
+---
+
+### 6. "I need to save/share results"
+**Run**:
+```bash
+/save-to-notebook
+```
+*Saves your assessment or report to Datadog Notebook for team collaboration*
 
 ---
 
@@ -614,6 +762,56 @@ Track your progress:
 
 ---
 
+## 📖 All Available Slash Commands
+
+### Assessment Commands
+| Command | Purpose | Time |
+|---------|---------|------|
+| `/assess` | Quick maturity check | 10 min |
+| `/assess-full` | Comprehensive assessment | 30 min |
+| `/assess-level0` | Level 0 validation | 15 min |
+| `/assess-level1` | Level 1 validation | 15 min |
+| `/gap-analysis` | Identify gaps to next level | 10 min |
+| `/upgrade-plan` | Generate upgrade roadmap | 15 min |
+
+### Level 0 Commands
+| Command | Purpose | Time |
+|---------|---------|------|
+| `/level0-infra` | Infrastructure inventory | 5 min |
+| `/level0-tagging` | Tagging compliance audit | 5 min |
+| `/level0-cost` | Cost baseline | 5 min |
+| `/level0-healthcheck` | Complete health check | 20 min |
+
+### Level 2+ Commands
+| Command | Purpose | Time |
+|---------|---------|------|
+| `/level2-tagging` | Advanced tagging strategy | 10 min |
+| `/level3-cost` | Detailed cost optimization | 15 min |
+
+### Reporting Commands
+| Command | Purpose | Time |
+|---------|---------|------|
+| `/generate-report` | Executive summary | 10 min |
+| `/save-to-notebook` | Save to Datadog | 2 min |
+| `/assess-to-notebook` | Assessment as notebook | 12 min |
+| `/append-to-notebook` | Append to existing notebook | 2 min |
+| `/create-starter-notebooks` | Generate 14 templates | 5 min |
+
+### Utility Commands
+| Command | Purpose | Time |
+|---------|---------|------|
+| `/help` | List all commands | instant |
+
+**Total**: 19 slash commands available
+
+For detailed command reference, see [COMMANDS.md](./COMMANDS.md)
+
+---
+
 **Need Help?** Simply ask Claude: *"Show me available commands for [TASK]"*
+
+**Ready to start?** Run `/assess` now!
+
+---
 
 **Last Updated**: 2025-12-12

@@ -59,6 +59,25 @@ get_datadog_metric(queries=["sum:all.cost{*}.rollup(sum, monthly)"], use_cloud_c
 ### Typical Duration
 2-4 weeks for initial discovery and planning
 
+### Implementation Guides
+For detailed implementation guidance, refer to these operational standards:
+
+- **Platform Setup**: [01-operational-standards-platform-preparation.md](../notebooks/01-operational-standards-platform-preparation.md)
+  - Network egress strategies (proxy, firewall configuration)
+  - API/App key management and naming conventions
+  - Datadog site selection and setup
+
+- **Tagging Strategy**: [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md)
+  - Unified Service Tagging (UST) framework
+  - Tag format standards (lowercase, underscores)
+  - Reserved vs recommended tags
+  - Tag enforcement approaches
+
+- **Compliance Planning**: [03-operational-standards-governance.md](../notebooks/03-operational-standards-governance.md)
+  - Regulatory requirements by framework (GDPR, HIPAA, FedRAMP, PCI-DSS)
+  - Data residency requirements
+  - Compliance-specific Datadog configurations
+
 ### Graduation Criteria to Level 1
 - Infrastructure inventory complete and validated
 - Tagging strategy approved by leadership
@@ -119,6 +138,29 @@ search_datadog_incidents(query="state:active")
 
 ### Typical Duration
 2-3 months for initial deployment
+
+### Implementation Guides
+For detailed implementation guidance, refer to these operational standards:
+
+- **Agent Deployment**: [01-operational-standards-platform-preparation.md](../notebooks/01-operational-standards-platform-preparation.md)
+  - Agent installation strategies
+  - Proxy configuration for restricted networks
+  - Firewall rules and network requirements
+
+- **Access Control**: [02-operational-standards-access-management.md](../notebooks/02-operational-standards-access-management.md)
+  - RBAC role setup (Standard role baseline)
+  - Basic permission management
+  - User invitation process
+
+- **Log Collection**: [04-operational-standards-data-monitoring.md](../notebooks/04-operational-standards-data-monitoring.md)
+  - Log ingestion setup
+  - Basic index configuration (default "main" index)
+  - Source identification
+
+- **Dashboard Creation**: [05-operational-standards-data-visualization.md](../notebooks/05-operational-standards-data-visualization.md)
+  - Infrastructure dashboard templates
+  - Basic widget configuration
+  - Monitor summary widgets
 
 ### Graduation Criteria to Level 2
 - Agent coverage >80% validated via MCP
@@ -186,6 +228,36 @@ search_datadog_dashboards(query="*", include_template_variables=true)
 
 ### Typical Duration
 3-6 months for full standardization
+
+### Implementation Guides
+For detailed implementation guidance, refer to these operational standards:
+
+- **Tagging Compliance**: [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md) ⭐ **CRITICAL**
+  - Unified Service Tagging (UST) implementation: env, service, version
+  - Recommended tags: team, runtime, journey, role, application
+  - Tag format enforcement (lowercase, underscores)
+  - Anti-patterns to avoid (CamelCase, unbounded values)
+  - Tag validation and governance
+
+- **Log Management**: [04-operational-standards-data-monitoring.md](../notebooks/04-operational-standards-data-monitoring.md)
+  - Log index strategy by type and environment
+  - Exclusion filter design (target: >60% exclusion)
+  - Archiving strategy (S3, Azure Blob, Flex Logs)
+  - Pipeline configuration and parsing
+  - Log optimization best practices
+
+- **Dashboard Standardization**: [05-operational-standards-data-visualization.md](../notebooks/05-operational-standards-data-visualization.md)
+  - App Overview Dashboard Template
+  - Monitor/SLO summary widget placement
+  - Template variable standards (app, env, service)
+  - 5-second health check design pattern
+  - Few-click drill-down architecture
+
+- **Team-Based Access**: [02-operational-standards-access-management.md](../notebooks/02-operational-standards-access-management.md)
+  - Datadog Teams setup (mirror org structure)
+  - Custom role creation (Developer, Development Manager)
+  - RBAC baseline (Standard role minus API keys)
+  - Team-based asset organization
 
 ### Graduation Criteria to Level 3
 - Tagging compliance validated at >95%
@@ -255,6 +327,33 @@ search_datadog_logs(query="*", storage_tier="indexes", from="now-30d")
 
 ### Typical Duration
 6-12 months for governance maturity
+
+### Implementation Guides
+For detailed implementation guidance, refer to these operational standards:
+
+- **Governance & Compliance**: [03-operational-standards-governance.md](../notebooks/03-operational-standards-governance.md) ⭐ **CRITICAL**
+  - Production readiness scorecard framework
+  - Compliance automation (GDPR, HIPAA, FedRAMP, PCI-DSS)
+  - Agent deployment strategies for regulated environments
+  - Data residency requirements
+  - Audit trail and retention policies
+
+- **Advanced Log Optimization**: [04-operational-standards-data-monitoring.md](../notebooks/04-operational-standards-data-monitoring.md)
+  - Multi-index strategy for cost control
+  - Advanced exclusion filters (>60% target)
+  - Archive rehydration workflows
+  - Flex Logs hybrid approach
+  - Log-based metrics generation
+
+- **Cost Attribution**: [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md)
+  - Cost center and business unit tags
+  - Team ownership tags for chargebacks
+  - Service-level cost tracking requirements
+
+- **Advanced RBAC**: [02-operational-standards-access-management.md](../notebooks/02-operational-standards-access-management.md)
+  - Custom role refinement for governance
+  - Datadog Teams permissions management
+  - Service-level access control
 
 ### Graduation Criteria to Level 4
 - Cost model validated and driving decisions
@@ -327,6 +426,22 @@ search_datadog_services(query="*")
 ### Typical Duration
 12-18 months for advanced automation
 
+### Implementation Guides
+For detailed implementation guidance, refer to these operational standards:
+
+- **Advanced Dashboards**: [05-operational-standards-data-visualization.md](../notebooks/05-operational-standards-data-visualization.md)
+  - Custom analytics dashboards
+  - RUM performance visualization
+  - Business KPI correlation widgets
+  - Advanced template variables
+
+- **Governance Excellence**: [03-operational-standards-governance.md](../notebooks/03-operational-standards-governance.md)
+  - Compliance automation validation
+  - Production readiness automation
+  - Continuous compliance monitoring
+
+**Note**: Level 4 focuses on automation and RUM. Operational standards provide foundation; Level 4 implementation requires custom automation development beyond standard guides.
+
 ### Graduation Criteria to Level 5
 - Self-healing demonstrating clear MTTR reduction
 - RUM insights driving product roadmap
@@ -394,6 +509,22 @@ search_datadog_notebooks(query="*")
 
 ### Typical Duration
 18+ months, ongoing improvement
+
+### Implementation Guides
+For detailed implementation guidance, refer to foundational operational standards:
+
+- **Excellence Foundations**: All operational standards documents remain relevant
+  - [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md) - Continuous tag governance
+  - [02-operational-standards-access-management.md](../notebooks/02-operational-standards-access-management.md) - Advanced RBAC patterns
+  - [03-operational-standards-governance.md](../notebooks/03-operational-standards-governance.md) - Compliance leadership
+  - [04-operational-standards-data-monitoring.md](../notebooks/04-operational-standards-data-monitoring.md) - Log excellence
+  - [05-operational-standards-data-visualization.md](../notebooks/05-operational-standards-data-visualization.md) - Dashboard innovation
+
+**Note**: Level 5 represents industry leadership. Implementation requires innovation beyond standard guides:
+- Custom ML models
+- Proprietary automation frameworks
+- Industry-specific observability patterns
+- Thought leadership contributions
 
 ### Characteristics of Level 5 Organizations
 - Observability is a competitive advantage

@@ -59,11 +59,25 @@ search_datadog_services(
 6. Monitoring gaps identified: [LIST]
 
 **Deliverable:**
-Create infrastructure inventory report and save to:
-`maturity-levels/level-0-foundation/infrastructure-inventory.md`
+
+Automatically create Datadog Notebook with infrastructure inventory:
+
+```
+create_datadog_notebook(
+    name="Level 0 - Foundation - Infrastructure Discovery - [DATE]",
+    type="documentation",
+    cells=... # Include infrastructure inventory markdown with statistics and tables
+)
+```
+
+**Notebook naming format:**
+- "Level 0 - Foundation - Infrastructure Discovery - YYYY-MM-DD"
+- Example: "Level 0 - Foundation - Infrastructure Discovery - 2025-12-12"
 
 Include:
-- Summary statistics
-- Visual breakdown (tables)
-- Identified gaps
+- Summary statistics (host count, agent versions, platforms)
+- Visual breakdown (tables by cloud provider, region, environment)
+- Identified gaps (unmonitored resources, missing agents)
 - Recommendations for monitoring expansion
+
+Return notebook URL for team review.

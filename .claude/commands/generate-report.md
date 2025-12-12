@@ -136,3 +136,21 @@ Generate executive-level maturity report suitable for leadership presentation.
 - Cost optimization opportunities chart
 - MTTR improvement trend
 - Scorecard heatmap
+
+**After generating report:**
+
+Automatically create Datadog Notebook with executive report:
+
+```
+create_datadog_notebook(
+    name="Level [CURRENT] - [Level Name] - Executive Report - [DATE]",
+    type="report",
+    cells=... # Include full executive report with visualizations
+)
+```
+
+**Notebook naming format:**
+- "Level [N] - [Level Name] - Executive Report - YYYY-MM-DD"
+- Example: "Level 2 - Optimization - Executive Report - 2025-12-12"
+
+Return notebook URL for leadership sharing.

@@ -85,13 +85,27 @@ Rank by cost:
    - Potential savings: $[AMOUNT] ([%])
 
 **Deliverable:**
-Create cost baseline report and save to:
-`maturity-levels/level-0-foundation/cost-baseline-report.md`
+
+Automatically create Datadog Notebook with cost baseline:
+
+```
+create_datadog_notebook(
+    name="Level 0 - Foundation - Cost Baseline - [DATE]",
+    type="documentation",
+    cells=... # Include cost analysis with charts and trends
+)
+```
+
+**Notebook naming format:**
+- "Level 0 - Foundation - Cost Baseline - YYYY-MM-DD"
+- Example: "Level 0 - Foundation - Cost Baseline - 2025-12-12"
 
 Include:
 - Executive summary with key numbers
 - Cost breakdown charts (tables)
-- Trend analysis
-- Top cost drivers
+- Trend analysis (if historical data available)
+- Top cost drivers by service/team
 - Preliminary optimization opportunities
-- Baseline for future comparison
+- Baseline metrics for future comparison
+
+Return notebook URL for team review and leadership reporting.

@@ -28,3 +28,20 @@ Run a quick SRE maturity assessment (10 minutes) covering all 8 dimensions:
 6. Recommended next steps
 
 **Output format:** Concise summary suitable for quick review.
+
+**After completing assessment:**
+
+Automatically create Datadog Notebook with results using:
+```
+create_datadog_notebook(
+    name="Level [DETECTED_LEVEL] - Assessment - [DATE]",
+    type="documentation",
+    cells=... # Include full assessment markdown
+)
+```
+
+**Notebook naming format:**
+- Quick assessment: "Level [N] - [Level Name] - Quick Assessment - YYYY-MM-DD"
+- Example: "Level 2 - Optimization - Quick Assessment - 2025-12-12"
+
+Include notebook URL in response for easy sharing.

@@ -231,7 +231,7 @@ Implement ongoing cost management:
 `maturity-levels/level-3-managed/cost-optimization-report-[DATE].md`
 
 **Track Progress:**
-```
+```bash
 # Re-run monthly to track optimization progress
 /level3-cost
 
@@ -240,3 +240,21 @@ Current: $[Amount]
 Target: $[Baseline × 0.80]
 Progress: [%] toward goal
 ```
+
+**After completing cost analysis:**
+
+Automatically create Datadog Notebook with optimization recommendations:
+
+```
+create_datadog_notebook(
+    name="Level 3 - Intelligence - Cost Optimization - [DATE]",
+    type="documentation",
+    cells=... # Include cost analysis, savings opportunities, and action plan
+)
+```
+
+**Notebook naming format:**
+- "Level 3 - Intelligence - Cost Optimization - YYYY-MM-DD"
+- Example: "Level 3 - Intelligence - Cost Optimization - 2025-12-12"
+
+Return notebook URL for finance team collaboration and tracking monthly progress.

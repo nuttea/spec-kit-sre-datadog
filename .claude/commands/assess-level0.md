@@ -49,4 +49,20 @@ Assess readiness for Level 0 (Foundation - Discovery & Planning phase).
 - Recommended actions to complete Level 0
 - Estimated time to completion
 
-**Output:** Save to `maturity-levels/level-0-foundation/assessment-results.md`
+**After completing validation:**
+
+Automatically create Datadog Notebook with Level 0 validation results:
+
+```
+create_datadog_notebook(
+    name="Level 0 - Foundation - Validation Report - [DATE]",
+    type="documentation",
+    cells=... # Include validation checklist and readiness score
+)
+```
+
+**Notebook naming format:**
+- "Level 0 - Foundation - Validation Report - YYYY-MM-DD"
+- Example: "Level 0 - Foundation - Validation Report - 2025-12-12"
+
+Return notebook URL for graduation milestone tracking.

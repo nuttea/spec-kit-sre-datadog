@@ -4,6 +4,9 @@ Generate comprehensive gap analysis between current level and target level.
 
 **Usage:** This command takes your current maturity level and identifies all gaps preventing you from reaching your target level.
 
+**For implementation guidance on each gap**, refer to:
+→ [Operational Standards Mapping](../planning/operational-standards-mapping.md) - Shows which operational standards to use for each capability
+
 **Parameters:**
 - Current Level: [Detected from assessment or user-specified]
 - Target Level: [User-specified or Current + 1]
@@ -113,3 +116,21 @@ Include:
 ## Success Metrics
 [How to measure success]
 ```
+
+**After completing gap analysis:**
+
+Automatically create Datadog Notebook with results:
+
+```
+create_datadog_notebook(
+    name="Level [CURRENT] to [TARGET] - Gap Analysis - [DATE]",
+    type="documentation",
+    cells=... # Include full gap analysis markdown
+)
+```
+
+**Notebook naming format:**
+- "Level [N] to Level [M] - Gap Analysis - YYYY-MM-DD"
+- Example: "Level 2 to Level 3 - Gap Analysis - 2025-12-12"
+
+Include notebook URL in response for team collaboration and tracking.

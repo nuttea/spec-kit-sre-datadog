@@ -61,4 +61,20 @@ Run a comprehensive SRE maturity assessment (30 minutes) with detailed analysis.
 6. Upgrade path to next level
 7. Cost-benefit analysis
 
-**Save results to:** `maturity-levels/assessment-reports/comprehensive-assessment-[DATE].md`
+**After completing assessment:**
+
+Automatically create Datadog Notebook with comprehensive results:
+
+```
+create_datadog_notebook(
+    name="Level [DETECTED_LEVEL] - [Level Name] - Comprehensive Assessment - [DATE]",
+    type="documentation",
+    cells=... # Include full comprehensive assessment report
+)
+```
+
+**Notebook naming format:**
+- "Level [N] - [Level Name] - Comprehensive Assessment - YYYY-MM-DD"
+- Example: "Level 2 - Optimization - Comprehensive Assessment - 2025-12-12"
+
+Return notebook URL for team collaboration and quarterly reviews.

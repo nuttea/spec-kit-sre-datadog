@@ -2,6 +2,13 @@
 
 Generate comprehensive Level 0 health check report combining all discovery findings.
 
+**For detailed implementation guidance**, refer to these operational standards:
+- → [01-operational-standards-platform-preparation.md](../notebooks/01-operational-standards-platform-preparation.md) - Network, proxy, API keys
+- → [operational-standards-tagging-strategy.md](../notebooks/operational-standards-tagging-strategy.md) - UST framework
+- → [03-operational-standards-governance.md](../notebooks/03-operational-standards-governance.md) - Compliance requirements
+
+See also: [Operational Standards Mapping](../planning/operational-standards-mapping.md) for complete Level 0 guidance.
+
 **Task: Create Initial Health Check Report**
 
 **Execute all Level 0 discovery tasks:**
@@ -131,8 +138,29 @@ Generate comprehensive Level 0 health check report combining all discovery findi
 
 ---
 
-**Save this report to:**
-`maturity-levels/level-0-foundation/healthcheck-report-[DATE].md`
+**After completing health check:**
 
-**Also create executive summary slide:** (optional)
-One-page summary suitable for leadership presentation.
+Automatically create Datadog Notebook with comprehensive health check results:
+
+```
+create_datadog_notebook(
+    name="Level 0 - Foundation - Health Check - [DATE]",
+    type="documentation",
+    cells=... # Include complete health check report with all sections
+)
+```
+
+**Notebook naming format:**
+- "Level 0 - Foundation - Health Check - YYYY-MM-DD"
+- Example: "Level 0 - Foundation - Health Check - 2025-12-12"
+
+Include all report sections:
+- Infrastructure summary
+- Agent coverage analysis
+- Tagging compliance
+- Monitoring gaps
+- Cost baseline
+- Recommendations with action items
+- Timeline to Level 1
+
+Return notebook URL for team review and leadership presentation.
